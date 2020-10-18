@@ -67,23 +67,23 @@ def rnn_forward(x, a0, parameters):
     n_y, n_a = parameters["Wya"].shape
     
     
-    # initialize "a" and "y_pred" with zeros (≈2 lines)
+    # initialize "a" and "y_pred" with zeros 
     a = np.zeros(shape=(n_a,m,T_x))
     y_pred = np.zeros(shape=(n_y, m,T_x))
     
     # Initialize a_next (≈1 line)
     a_next = a0
     
-    # loop over all time-steps of the input 'x' (1 line)
+    # loop over all time-steps of the input 'x' 
     for t in range(T_x):
-        # Update next hidden state, compute the prediction, get the cache (≈2 lines)
+        # Update next hidden state, compute the prediction, get the cache 
         xt = x[:,:,t]
         a_next, yt_pred, cache = rnn_cell_forward(xt, a_next, parameters)
-        # Save the value of the new "next" hidden state in a (≈1 line)
+        # Save the value of the new "next" hidden state in a 
         a[:,:,t] = a_next
-        # Save the value of the prediction in y (≈1 line)
+        # Save the value of the prediction in y 
         y_pred[:,:,t] = yt_pred
-        # Append "cache" to "caches" (≈1 line)
+        # Append "cache" to "caches" 
         caches.append(cache)
 
     
@@ -152,7 +152,7 @@ def lstm_cell_forward(xt, a_prev, c_prev, parameters):
     ot = sigmoid(np.matmul(Wo, concat) + bo)        # output gate
     a_next = ot * np.tanh(c_next)    # hidden state
     
-    # Compute prediction of the LSTM cell (≈1 line)
+    # Compute prediction of the LSTM cell 
     yt_pred = softmax(np.matmul(Wy, a_next) + by)
 
     # store values needed for backward propagation in cache
@@ -192,11 +192,11 @@ def lstm_forward(x, a0, parameters):
     caches = []
     
     Wy = parameters['Wy'] # saving parameters['Wy'] in a local variable in case students use Wy instead of parameters['Wy']
-    # Retrieve dimensions from shapes of x and parameters['Wy'] (≈2 lines)
+    # Retrieve dimensions from shapes of x and parameters['Wy']
     n_x, m, T_x = x.shape
     n_y, n_a = Wy.shape
     
-    # initialize "a", "c" and "y" with zeros (≈3 lines)
+    # initialize "a", "c" and "y" with zeros 
     a = np.zeros(shape=(n_a,m,T_x))
     c = np.zeros(shape=(n_a, m, T_x))
     y = np.zeros(shape=(n_y, m , T_x))
@@ -209,15 +209,15 @@ def lstm_forward(x, a0, parameters):
     for t in range(T_x):
         # Get the 2D slice 'xt' from the 3D input 'x' at time step 't'
         xt = x[:, :, t]
-        # Update next hidden state, next memory state, compute the prediction, get the cache (≈1 line)
+        # Update next hidden state, next memory state, compute the prediction, get the cache 
         a_next, c_next, yt, cache = lstm_cell_forward(xt, a_next, c_next, parameters)
-        # Save the value of the new "next" hidden state in a (≈1 line)
+        # Save the value of the new "next" hidden state in a 
         a[:,:,t] = a_next
-        # Save the value of the next cell state (≈1 line)
+        # Save the value of the next cell state 
         c[:,:,t]  = c_next
-        # Save the value of the prediction in y (≈1 line)
+        # Save the value of the prediction in y 
         y[:,:,t] = yt
-        # Append the cache into caches (≈1 line)
+        # Append the cache into caches 
         caches.append(cache)
         
     
