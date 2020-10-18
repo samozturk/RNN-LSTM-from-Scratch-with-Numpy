@@ -3,7 +3,6 @@ from utils import *
 
 def rnn_cell_forward(xt, a_prev, parameters):
     """
-    Implements a single forward step of the RNN-cell as described in Figure (2)
 
     Arguments:
     xt -- your input data at timestep "t", numpy array of shape (n_x, m).
@@ -42,7 +41,7 @@ def rnn_cell_forward(xt, a_prev, parameters):
     
 def rnn_forward(x, a0, parameters):
     """
-    Implement the forward propagation of the recurrent neural network described in Figure (3).
+
 
     Arguments:
     x -- Input data for every time-step, of shape (n_x, m, T_x).
@@ -96,7 +95,7 @@ def rnn_forward(x, a0, parameters):
     
 def lstm_cell_forward(xt, a_prev, c_prev, parameters):
     """
-    Implement a single forward step of the LSTM-cell as described in Figure (4)
+
 
     Arguments:
     xt -- your input data at timestep "t", numpy array of shape (n_x, m).
@@ -165,7 +164,7 @@ def lstm_cell_forward(xt, a_prev, c_prev, parameters):
     
 def lstm_forward(x, a0, parameters):
     """
-    Implement the forward propagation of the recurrent neural network using an LSTM-cell described in Figure (4).
+
 
     Arguments:
     x -- Input data for every time-step, of shape (n_x, m, T_x).
